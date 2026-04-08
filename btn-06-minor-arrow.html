@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Button</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:transparent;display:flex;align-items:center;justify-content:flex-start;padding:8px;font-family:'Open Sans',sans-serif;}
+
+  /* ── Sodexo Minor CTA — Animated Arrow ── */
+  /* No border/background — just text + sliding arrow icon */
+  /* Hover: arrow slides up and out, new arrow enters from below */
+  .sdx-btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:0;
+    height:28px;
+    background:none;
+    border:none;
+    font-family:'Open Sans',sans-serif;
+    font-size:16px;
+    font-weight:600;
+    color:#2A295C;
+    cursor:pointer;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  .sdx-btn__label{ flex-shrink:0; }
+
+  /* Icon container clips the sliding arrows */
+  .sdx-btn__icon{
+    position:relative;
+    width:24px;
+    height:24px;
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .sdx-btn__icon svg{
+    position:absolute;
+    left:0;
+    width:24px;
+    height:24px;
+    color:#DA2020; /* Red arrows per Figma spec */
+    transition:top 300ms cubic-bezier(0.4,0,0.2,1);
+  }
+  /* Arrow 1 visible at rest; Arrow 2 waiting below */
+  .sdx-btn__icon .arrow-1{ top:0; }
+  .sdx-btn__icon .arrow-2{ top:38px; }
+
+  .sdx-btn:hover .arrow-1{ top:-38px; }
+  .sdx-btn:hover .arrow-2{ top:0; }
+
+  /* Disabled */
+  .sdx-btn:disabled{ color:#737373; cursor:not-allowed; }
+  .sdx-btn:disabled .sdx-btn__icon svg{ color:#737373; }
+  .sdx-btn:focus-visible{ outline:2px solid #7E8ACC; outline-offset:3px; border-radius:2px; }
+</style>
+</head>
+<body>
+<a href="#" class="sdx-btn">
+  <span class="sdx-btn__label">Learn More</span>
+  <span class="sdx-btn__icon" aria-hidden="true">
+    <svg class="arrow-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+    <svg class="arrow-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </span>
+</a>
+</body>
+</html>
